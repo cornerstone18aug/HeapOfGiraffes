@@ -1,6 +1,7 @@
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.util.List;
 
 public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue<K, V> {
 
@@ -41,11 +42,15 @@ public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
         return this.queue.pop();
     }
 
+    public List<Entry<K, V>> getQueue() {
+        return queue;
+    }
+
     @Override
     public VCPriorityQueue<K, V> merge(VCPriorityQueue<K, V> other) {
-        ALPriorityQueue<K, V> otherQ = ((ALPriorityQueue) other);
+        DLPriorityQueue<K, V> otherQ = ((DLPriorityQueue) other);
         for (Entry<K, V> entry : otherQ.getQueue()) {
-            this.queue.add(entry);
+            this.enqueue(entry.getKey(), entry.getValue());
         }
         return this;
     }
