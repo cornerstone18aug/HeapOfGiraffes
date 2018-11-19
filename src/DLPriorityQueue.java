@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Collections;
 
@@ -23,7 +24,7 @@ public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     public Entry<K, V> enqueue(K key, V value) throws IllegalArgumentException {
         Entry<K, V> newEntry = new Entry<>(key, value);
         this.queue.add(new Entry<K, V>(key, value));
-        Collections.sort(queue, (item1, item2) -> item1.getKey().compareTo(item2.getKey()));
+        Collections.sort(queue, Comparator.comparing(Entry::getKey));
         return newEntry;
     }
 
