@@ -24,7 +24,7 @@ public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     public Entry<K, V> enqueue(K key, V value) throws IllegalArgumentException {
         Entry<K, V> newEntry = new Entry<>(key, value);
         this.queue.add(new Entry<>(key, value));
-        //sort the list every time a new element is add
+        //for
         Collections.sort(queue, Comparator.comparing(Entry::getKey));
         return newEntry;
     }

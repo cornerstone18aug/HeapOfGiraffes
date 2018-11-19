@@ -7,23 +7,34 @@ public class Driver {
         ALPriorityQueue alPriorityQueue = new ALPriorityQueue();
         DLPriorityQueue dlPriorityQueue = new DLPriorityQueue();
 
+        System.out.println("========== Array List ==========");
+        Entry enqueued =  alPriorityQueue.enqueue(2, 10);
+        Entry enqueued1 = alPriorityQueue.enqueue(0, 20);
+        Entry enqueued2 = alPriorityQueue.enqueue(1, 30);
 
-        alPriorityQueue.enqueue(2, 10);
-        alPriorityQueue.enqueue(0, 20);
-        alPriorityQueue.enqueue(1, 30);
+        System.out.println("Enqueue: ");
+        System.out.println(enqueued.getKey() + " - " + enqueued.getValue());
+        System.out.println(enqueued1.getKey() + " - " + enqueued1.getValue());
+        System.out.println(enqueued2.getKey() + " - " + enqueued2.getValue());
 
-        System.out.println("Array List - dequeue: ");
+        System.out.println("\nDequeue: ");
         for (int i = 0; i < 3; i++) {
             Entry entry = alPriorityQueue.dequeueMin();
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
 
-        dlPriorityQueue.enqueue(1, 100);
-        dlPriorityQueue.enqueue(3, 200);
-        dlPriorityQueue.enqueue(2, 300);
-        dlPriorityQueue.enqueue(0, 400);
+        System.out.println("\n=========== Double Linked ===========");
+        Entry enqueue_dl = dlPriorityQueue.enqueue(1, 100);
+        Entry enqueue_dl1 = dlPriorityQueue.enqueue(3, 200);
+        Entry enqueue_dl2 = dlPriorityQueue.enqueue(2, 300);
+        Entry enqueue_dl3 = dlPriorityQueue.enqueue(0, 400);
+        System.out.println("Enqueue: ");
+        System.out.println(enqueue_dl.getKey() + " - " + enqueue_dl.getValue());
+        System.out.println(enqueue_dl1.getKey() + " - " + enqueue_dl1.getValue());
+        System.out.println(enqueue_dl2.getKey() + " - " + enqueue_dl2.getValue());
+        System.out.println(enqueue_dl3.getKey() + " - " + enqueue_dl3.getValue());
 
-        System.out.println("\nDouble Linked - dequeue: ");
+        System.out.println("\nDequeue: ");
         for (int i = 0; i < 4; i++) {
             Entry entry = dlPriorityQueue.dequeueMin();
             System.out.println(entry.getKey() + " - " + entry.getValue());
