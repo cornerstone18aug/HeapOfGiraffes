@@ -7,9 +7,9 @@ public class Driver {
         System.out.println("Array List: ");
 
         ALPriorityQueue alPriorityQueue = new ALPriorityQueue();
-        alPriorityQueue.enqueue(2,10);
-        alPriorityQueue.enqueue(1,20);
-        alPriorityQueue.enqueue(0,30);
+        alPriorityQueue.enqueue(2, 10);
+        alPriorityQueue.enqueue(1, 20);
+        alPriorityQueue.enqueue(0, 30);
 
         System.out.println(alPriorityQueue.dequeueMin().getValue());
         System.out.println(alPriorityQueue.dequeueMin().getValue());
@@ -28,8 +28,7 @@ public class Driver {
         System.out.println(dlPriorityQueue.dequeueMin().getValue());
 
 
-
-    /*    Scanner in = new Scanner(System.in);
+        /*Scanner in = new Scanner(System.in);
         System.out.println("=========MENU==========");
         System.out.println("1- Array List");
         System.out.println("2- Double Linked");
@@ -37,9 +36,20 @@ public class Driver {
         System.out.println("0 - Exit");
         System.out.println("Enter: ");
         int menu = in.nextInt();
-        while (menu != 0){
+        while (menu != 0) {
             switch (menu) {
                 case 1:
+                    int menu_al = 0;
+                    System.out.println("1- Enqueue: ");
+                    System.out.println("2- Dequeue: ");
+                    System.out.println("0- Exit");
+                    menu_al = in.nextInt();
+                    while (menu_al != 0) {
+                        if (menu_al == 1){
+
+                        }
+                    }
+
             }
         }*/
     }

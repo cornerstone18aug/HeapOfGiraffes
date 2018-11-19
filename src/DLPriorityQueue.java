@@ -1,68 +1,47 @@
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Collections;
 
-public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue<K, V>{
+public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue<K, V> {
 
-    private List<Entry<K, V>> queue2;
+    private LinkedList<Entry<K, V>> queue;
 
     public DLPriorityQueue() {
-        queue2 = new LinkedList<>();
+        queue = new LinkedList<>();
     }
 
     @Override
     public int size() {
-        return queue2.size();
+        return queue.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return queue2.isEmpty();
+        return queue.isEmpty();
     }
 
     @Override
     public Entry<K, V> enqueue(K key, V value) throws IllegalArgumentException {
-        Entry<K, V> before = new Entry<>(key, value);
-        Entry<K, V> after = new Entry<>(key, value);
         Entry<K, V> newEntry = new Entry<>(key, value);
-        queue2.add(before);
-        queue2.add(after);
-        queue2.add(newEntry);
-        if (before == null && after == null) {
-            before = newEntry;
-            after = newEntry;
-        } else {
-            if (newEntry.getKey().compareTo(before.getKey()) > 0) {
-                before = newEntry;
-            } else if (newEntry.getKey().compareTo(before.getKey()) < 0) {
-                after = newEntry;
-            }
-        }
+        this.queue.add(new Entry<K, V>(key, value));
+        Collections.sort(queue, (item1, item2) -> item1.getKey().compareTo(item2.getKey()));
         return newEntry;
     }
 
     @Override
     public Entry<K, V> peek() {
-        return queue2.get(0);
+        return this.queue.getFirst();
     }
 
     @Override
     public Entry<K, V> dequeueMin() {
-        return queue2.remove(0);
-    }
-
-    public List<Entry<K, V>> getQueue2() {
-        return queue2;
+        return this.queue.pop();
     }
 
     @Override
     public VCPriorityQueue<K, V> merge(VCPriorityQueue<K, V> other) {
-        DLPriorityQueue<K, V> otherQ = ((DLPriorityQueue) other);
-        for (Entry<K, V> entry : otherQ.getQueue2()) {
-            for (int i = 0; i < queue2.size(); i++) {
-                if (queue2.get(i).getKey().compareTo(entry.getKey()) < 0) {
-                    entry = queue2.get(i);
-                }
-            }
+        ALPriorityQueue<K, V> otherQ = ((ALPriorityQueue) other);
+        for (Entry<K, V> entry : otherQ.getQueue()) {
+            this.queue.add(entry);
         }
         return this;
     }
