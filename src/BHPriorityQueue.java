@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.List;
 
 public class BHPriorityQueue <K extends Comparable, V> implements VCPriorityQueue<K, V> {
 
@@ -22,12 +21,12 @@ public class BHPriorityQueue <K extends Comparable, V> implements VCPriorityQueu
 
     @Override
     public Entry<K, V> peek() {
-        return null;
+        return this.queue.getFirst();
     }
 
     @Override
     public Entry<K, V> dequeueMin() {
-        return null;
+        return this.queue.pop();
     }
 
     @Override
