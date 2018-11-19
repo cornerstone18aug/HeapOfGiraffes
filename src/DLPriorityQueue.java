@@ -23,17 +23,20 @@ public class DLPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     @Override
     public Entry<K, V> enqueue(K key, V value) throws IllegalArgumentException {
         Entry<K, V> newEntry = new Entry<>(key, value);
-        this.queue.add(new Entry<K, V>(key, value));
+        this.queue.add(new Entry<>(key, value));
+        //sort the list every time a new element is add
         Collections.sort(queue, Comparator.comparing(Entry::getKey));
         return newEntry;
     }
 
     @Override
+    //Peek the first element
     public Entry<K, V> peek() {
         return this.queue.getFirst();
     }
 
     @Override
+    //Pop the element whit the minimum key
     public Entry<K, V> dequeueMin() {
         return this.queue.pop();
     }

@@ -19,6 +19,7 @@ public class ALPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     }
 
     @Override
+    //Unsorted enqueue:
     public Entry<K, V> enqueue(K key, V value) throws IllegalArgumentException {
         Entry<K, V> newEntry = new Entry<>(key, value);
         queue.add(newEntry);
@@ -26,6 +27,7 @@ public class ALPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     }
 
     @Override
+    //get the smallest key
     public Entry<K, V> peek() {
         Entry<K, V> min = queue.get(0);
         for(Entry<K, V> entry: queue) {
@@ -37,6 +39,7 @@ public class ALPriorityQueue<K extends Comparable, V> implements VCPriorityQueue
     }
 
     @Override
+    //get minimum index and then dequeue
     public Entry<K, V> dequeueMin() {
         int minIndex = 0;
         for(int i = 1; i < queue.size(); i++) {

@@ -5,22 +5,25 @@ import java.util.Scanner;
 public class Driver {
     public static void main(String[] args) {
         ALPriorityQueue alPriorityQueue = new ALPriorityQueue();
-        System.out.println("Array List: ");
-        alPriorityQueue.enqueue(2, 10);
-        alPriorityQueue.enqueue(1, 20);
-        alPriorityQueue.enqueue(0, 30);
+        DLPriorityQueue dlPriorityQueue = new DLPriorityQueue();
 
+
+        alPriorityQueue.enqueue(2, 10);
+        alPriorityQueue.enqueue(0, 20);
+        alPriorityQueue.enqueue(1, 30);
+
+        System.out.println("Array List - dequeue: ");
         for (int i = 0; i < 3; i++) {
             Entry entry = alPriorityQueue.dequeueMin();
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
-        System.out.println("Double Linked: ");
-        DLPriorityQueue dlPriorityQueue = new DLPriorityQueue();
-        dlPriorityQueue.enqueue(1, 100);
-        dlPriorityQueue.enqueue(0, 200);
-        dlPriorityQueue.enqueue(3, 300);
-        dlPriorityQueue.enqueue(4, 400);
 
+        dlPriorityQueue.enqueue(1, 100);
+        dlPriorityQueue.enqueue(3, 200);
+        dlPriorityQueue.enqueue(2, 300);
+        dlPriorityQueue.enqueue(0, 400);
+
+        System.out.println("\nDouble Linked - dequeue: ");
         for (int i = 0; i < 4; i++) {
             Entry entry = dlPriorityQueue.dequeueMin();
             System.out.println(entry.getKey() + " - " + entry.getValue());
